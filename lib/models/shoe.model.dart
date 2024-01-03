@@ -1,5 +1,6 @@
 class Shoe {
   // Variable
+  final int? id;
   final String name;
   final String price;
   final String imagePath;
@@ -7,7 +8,8 @@ class Shoe {
 
   // Contructor
   Shoe(
-      {required this.name,
+      {this.id,
+      required this.name,
       required this.price,
       required this.imagePath,
       required this.description});

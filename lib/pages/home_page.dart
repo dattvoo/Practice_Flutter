@@ -25,9 +25,9 @@ class _HomePageState extends State<HomePage> {
   // Pages to display
   final List<Widget> _pages = [
     // Shop page
-    ShopPage(),
+    const ShopPage(),
     // Cart Page
-    CartPage(),
+    const CartPage(),
   ];
   // UI
   @override

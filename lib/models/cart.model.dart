@@ -5,24 +5,29 @@ class Cart extends ChangeNotifier {
   // List of shoe
   List<Shoe> shoeShop = [
     Shoe(
+        id: 1,
         name: "Product 1",
         price: "200",
-        imagePath: 'lib/images/logo-nike.png',
+        imagePath: 'lib/images/item-1.jpg',
+        description:
+            "This is considered an error condition because it indicates that there is content that cannot be seen"),
+    Shoe(
+        id: 2,
+        name: "Product 1",
+        price: "200",
+        imagePath: 'lib/images/item-2.png',
         description: "Hehehe"),
     Shoe(
+        id: 3,
         name: "Product 1",
         price: "200",
-        imagePath: 'lib/images/logo-nike.png',
+        imagePath: 'lib/images/item-3.jpg',
         description: "Hehehe"),
     Shoe(
+        id: 4,
         name: "Product 1",
         price: "200",
-        imagePath: 'lib/images/logo-nike.png',
-        description: "Hehehe"),
-    Shoe(
-        name: "Product 1",
-        price: "200",
-        imagePath: 'lib/images/logo-nike.png',
+        imagePath: 'lib/images/item-4.jpg',
         description: "Hehehe"),
   ];
   // List of item in user cart
