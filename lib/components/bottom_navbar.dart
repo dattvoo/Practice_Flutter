@@ -3,12 +3,15 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 class BottomNavbar extends StatelessWidget {
   final Function(int)? onTabChange;
-  BottomNavbar({super.key, required this.onTabChange});
+  final int selectedIndex;
+  const BottomNavbar(
+      {super.key, required this.onTabChange, required this.selectedIndex});
 
   @override
   Widget build(BuildContext context) {
+    print("Context $context");
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: GNav(
         color: Colors.grey[400],
         activeColor: Colors.grey.shade700,
@@ -16,7 +19,7 @@ class BottomNavbar extends StatelessWidget {
         tabBackgroundColor: Colors.grey.shade100,
         mainAxisAlignment: MainAxisAlignment.center,
         tabBorderRadius: 12,
-        onTabChange: (value) => onTabChange!(value),
+        onTabChange: onTabChange,
         tabs: const [
           GButton(
             icon: Icons.home,
@@ -27,6 +30,7 @@ class BottomNavbar extends StatelessWidget {
             text: "Cart",
           )
         ],
+        selectedIndex: selectedIndex,
       ),
     );
   }

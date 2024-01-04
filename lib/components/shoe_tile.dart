@@ -11,6 +11,7 @@ class ShoeTile extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 24, left: 12, right: 12),
       width: 280,
+      height: 500,
       decoration: BoxDecoration(
           color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
       child: Column(
@@ -19,15 +20,23 @@ class ShoeTile extends StatelessWidget {
           // Shoe Pic
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(shoe.imagePath),
+            child: Image.asset(
+              shoe.imagePath,
+              fit: BoxFit.fill,
+              height: 300,
+              width: 280,
+            ),
           ),
 
           // Shoe Description
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 18),
-            child: Text(
-              shoe.description,
-              style: TextStyle(color: Colors.grey[600]),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: RichText(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              text: TextSpan(
+                  text: shoe.description,
+                  style: TextStyle(color: Colors.grey[600])),
             ),
           ),
           // Shoe price + details

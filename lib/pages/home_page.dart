@@ -1,7 +1,10 @@
 import 'package:ecommerce_app/components/bottom_navbar.dart';
+import 'package:ecommerce_app/models/cart.model.dart';
 import 'package:ecommerce_app/pages/cart_page.dart';
 import 'package:ecommerce_app/pages/shop_page.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,7 +15,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   // Variable
-
   // Selected index is to control the bottom nav bar
   int _seletedIndex = 0;
   // Method
@@ -25,17 +27,21 @@ class _HomePageState extends State<HomePage> {
   // Pages to display
   final List<Widget> _pages = [
     // Shop page
-    const ShopPage(),
+    ShopPage(),
     // Cart Page
     const CartPage(),
   ];
+
   // UI
   @override
   Widget build(BuildContext context) {
+    print("_seletedIndex $_seletedIndex");
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 158, 158, 158),
-      bottomNavigationBar:
-          BottomNavbar(onTabChange: (index) => navigatorBottomBar(index)),
+      bottomNavigationBar: BottomNavbar(
+        onTabChange: (index) => navigatorBottomBar(index),
+        selectedIndex: _seletedIndex,
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -48,6 +54,30 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         }),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _seletedIndex = 1;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 18),
+              child: badges.Badge(
+                position: badges.BadgePosition.topEnd(top: -15),
+                badgeContent: Consumer<Cart>(
+                  builder: (context, value, child) {
+                    return Text(value.userCart.length.toString());
+                  },
+                ),
+                child: const Icon(
+                  Icons.shopping_cart,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+          )
+        ],
       ),
       drawer: Drawer(
           backgroundColor: Colors.grey[900],
