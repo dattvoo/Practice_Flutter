@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
           )),
       body: SingleChildScrollView(
           physics: AlwaysScrollableScrollPhysics(),
-          child: _pages[_seletedIndex]),
+          child: SafeArea(child: _pages[_seletedIndex])),
     );
   }
 }

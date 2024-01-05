@@ -14,7 +14,7 @@ class CartPage extends StatelessWidget {
         return SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Container(
-            margin: const EdgeInsets.only(top: 120),
+            margin: const EdgeInsets.only(top: 250),
             child: Column(
               children: [
                 Padding(
@@ -30,7 +30,7 @@ class CartPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 8,
+                        height: 20,
                       ),
 
                       Container(
