@@ -35,7 +35,6 @@ class _HomePageState extends State<HomePage> {
   // UI
   @override
   Widget build(BuildContext context) {
-    print("_seletedIndex $_seletedIndex");
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 158, 158, 158),
       bottomNavigationBar: BottomNavbar(
@@ -140,7 +139,9 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           )),
-      body: _pages[_seletedIndex],
+      body: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: _pages[_seletedIndex]),
     );
   }
 }

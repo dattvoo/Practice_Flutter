@@ -9,7 +9,6 @@ class BottomNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Context $context");
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: GNav(

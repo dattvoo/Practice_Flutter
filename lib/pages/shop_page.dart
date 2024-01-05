@@ -130,18 +130,21 @@ class _ShopPageState extends State<ShopPage> {
               // List Items
               widget._isLoading
                   ? Skeleton()
-                  : Expanded(
-                      child: ListView.builder(
-                      itemCount: value.getShoeList().length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        Shoe shoe = value.getShoeList()[index];
-                        return ShoeTile(
-                          shoe: shoe,
-                          onTap: () => addToCart(shoe),
-                        );
-                      },
-                    )),
+                  : Container(
+                      height: 600,
+                      child: Expanded(
+                          child: ListView.builder(
+                        itemCount: value.getShoeList().length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          Shoe shoe = value.getShoeList()[index];
+                          return ShoeTile(
+                            shoe: shoe,
+                            onTap: () => addToCart(shoe),
+                          );
+                        },
+                      )),
+                    ),
               const Padding(
                 padding: EdgeInsets.only(top: 25, left: 25, right: 25),
                 child: Divider(

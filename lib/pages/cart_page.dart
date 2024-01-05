@@ -11,47 +11,61 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Cart>(
       builder: (context, value, child) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              // Heading
-              const Center(
-                child: Text(
-                  'My Cart',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
+        return SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Container(
+            margin: const EdgeInsets.only(top: 120),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    children: [
+                      // Heading
+                      const Center(
+                        child: Text(
+                          'My Cart',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
 
-              Flexible(
-                child: ListView.builder(
-                  itemCount: value.getUserCart().length,
-                  itemBuilder: (context, index) {
-                    // Get individual shoe
-                    Shoe userCart = value.getUserCart()[index];
-                    // return the cart item
-                    return CartItem(shoe: userCart);
-                  },
-                ),
-              ),
+                      Container(
+                        height: 600,
+                        child: ListView.builder(
+                          itemCount: value.getUserCart().length,
+                          itemBuilder: (context, index) {
+                            // Get individual shoe
+                            Shoe userCart = value.getUserCart()[index];
+                            // return the cart item
+                            return CartItem(shoe: userCart);
+                          },
+                        ),
+                      ),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    "Sub-total: ",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text(
+                            "Sub-total: ",
+                            style: TextStyle(
+                                fontSize: 24, fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            value.getTotalMoney().toString(),
+                            style: const TextStyle(
+                                fontSize: 24, color: Colors.black),
+                          )
+                        ],
+                      ),
+                    ],
                   ),
-                  Text(
-                    value.getTotalMoney().toString(),
-                    style: TextStyle(fontSize: 24, color: Colors.black),
-                  )
-                ],
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         );
       },

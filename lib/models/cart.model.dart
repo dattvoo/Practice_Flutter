@@ -19,15 +19,6 @@ class Cart extends ChangeNotifier {
     return userCart;
   }
 
-  // Add item to cart
-  // void addToCart(Shoe shoe) {
-  //   final shoeMap = shoe.toJson();
-  //   http.post(
-  //       Uri.parse('https://63f57b5a3f99f5855dc218a1.mockapi.io/shoppingcart'),
-  //       body: shoe);
-  //   userCart.add(shoe);
-  //   notifyListeners();
-  // }
   Future<void> addToCart(Shoe shoe) async {
     // Convert the Shoe object to a Map
     final shoeMap = shoe.toJson();
