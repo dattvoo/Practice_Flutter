@@ -22,17 +22,26 @@ class Cart extends ChangeNotifier {
   Future<void> addToCart(Shoe shoe) async {
     // Convert the Shoe object to a Map
     final shoeMap = shoe.toJson();
-
+    final jsonData = {
+      "cartItems": [
+        {
+          "id": shoeMap['id'],
+          "name": shoeMap['name'],
+          "price": shoeMap['price'],
+          "quantity": 1, // Assuming the default quantity is 1
+          "imagePath": shoeMap['imagePath'],
+        }
+      ]
+    };
     try {
       // Make a POST request with the shoeMap as the body
-      final response = await http.post(
-        Uri.parse('https://63f57b5a3f99f5855dc218a1.mockapi.io/shoppingcart'),
-        body: jsonEncode(shoeMap),
+      final response = await http.put(
+        Uri.parse('https://63f57b5a3f99f5855dc218a1.mockapi.io/carts/1'),
+        body: jsonEncode(jsonData),
         headers: {'Content-Type': 'application/json'},
       );
 
-      if (response.statusCode == 201) {
-        // If the request was successful (status code 201), add the shoe to the userCart
+      if (response.statusCode == 200) {
         userCart.add(shoe);
         notifyListeners();
       } else {

@@ -1,6 +1,9 @@
+import 'package:ecommerce_app/models/cart.model.dart';
 import 'package:ecommerce_app/models/shoe.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 
 class CartItem extends StatefulWidget {
   final Shoe shoe;
@@ -14,6 +17,11 @@ class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
     Shoe shoe = widget.shoe;
+    void deleteShoeFromCart() {
+      // print("shoe: ${shoe.id}");
+      Provider.of<Cart>(context, listen: false).removeItemFromCart(shoe);
+    }
+
     return Container(
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(12)),
@@ -23,7 +31,9 @@ class _CartItemState extends State<CartItem> {
           motion: const StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: (BuildContext) => {},
+              onPressed: (context) {
+                deleteShoeFromCart();
+              },
               icon: Icons.delete,
               backgroundColor: Colors.red.shade300,
               borderRadius: BorderRadius.circular(8),

@@ -132,8 +132,7 @@ class _ShopPageState extends State<ShopPage> {
                   ? Skeleton()
                   : Container(
                       height: 600,
-                      child: Expanded(
-                          child: ListView.builder(
+                      child: ListView.builder(
                         itemCount: value.getShoeList().length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
@@ -143,7 +142,7 @@ class _ShopPageState extends State<ShopPage> {
                             onTap: () => addToCart(shoe),
                           );
                         },
-                      )),
+                      ),
                     ),
               const Padding(
                 padding: EdgeInsets.only(top: 25, left: 25, right: 25),
